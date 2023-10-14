@@ -54,19 +54,18 @@ function setup() {
 function drawPennies() {
 
   for (let n = 0; n < numPennies; ++n) {
+
+    penny = (n + currentPenny)%numPennies;
     // ---------------------------------- ** variable to store random image from array ** -----------------------------------------------
-    var idx = n%numPennies;
+    var idx = penny%numPennies;
     randomVariable = randomImage[idx];
-    // random(randomImage);
 
     // --------------------------- ------ ** if statement to make 2p bigger than 1p ** ------------------------------------------------
     if (randomVariable != randomImage[2] && randomVariable != randomImage[0] && randomVariable != randomImage[1]) {
-      image(randomVariable,pennyX[n],pennyY[n],70,70);
+      image(randomVariable,pennyX[penny],pennyY[penny],70,70);
     }
     else {
-      image(randomVariable,pennyX[n],pennyY[n],85,85);
-      //image(randomImage[randomVar],mouseX,mouseY,80,80);
-
+      image(randomVariable,pennyX[penny],pennyY[penny],85,85);
     }
   }
 }
@@ -75,7 +74,6 @@ function drawThought() {
   textSize(20);
   text("Penny for your thoughts?", 50, 50);
   text(currentThought, 50, 100);
-  // if (++currentThought == randomThought.length) currentThought = 0;
 }
 
 function draw() {
