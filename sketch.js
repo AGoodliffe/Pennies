@@ -24,6 +24,16 @@ let currentPenny = 0;
 let pennyX = [-1];
 let pennyY = [-1];
 
+let randomThought = [
+  "My thought one",
+  "My thought two",
+  "My thought three",
+  "My thought four"
+];
+let currentThought = randomThought[0];
+
+let button;
+
 function preload() {
 
   // ---------------------------------------- ** loading images ** ----------------------------------------------------------
@@ -74,6 +84,9 @@ function setup() {
   background(242,190,210);
   frameRate(7)
 
+  button = createButton('click me');
+  button.position(0, 0);
+  button.mousePressed(onButtonPressed);
 }
 
 function drawPennies() {
@@ -94,7 +107,13 @@ function drawPennies() {
 
     }
   }
+}
 
+function drawThought() {
+  textSize(20);
+  text("Penny for your thoughts?", 50, 50);
+  text(currentThought, 50, 100);
+  // if (++currentThought == randomThought.length) currentThought = 0;
 }
 
 function draw() {
@@ -106,12 +125,18 @@ function draw() {
   clear();
   background(242,190,210);
 
-
   pennyX[currentPenny] = mouseX;
   pennyY[currentPenny] = mouseY;
 
   if (++currentPenny == numPennies) currentPenny = 0;
 
+  drawThought();
   drawPennies();
+
+}
+
+function onButtonPressed() {
+
+  currentThought = random(randomThought);
 
 }
