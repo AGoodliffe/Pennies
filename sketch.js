@@ -1,5 +1,3 @@
-//import { Delay } from "../../.vscode/extensions/samplavigne.p5-vscode-1.2.14/p5types/index";
-
 // -------------------------------------------- ** declare variables ** -----------------------------------------------------
 let img0;
 let img1;
@@ -20,6 +18,11 @@ let img15;
 //let img16;
 let randomImage = [];
 let randomVar;
+
+let numPennies = 15;
+let currentPenny = 0;
+let pennyX = [-1];
+let pennyY = [-1];
 
 function preload() {
 
@@ -42,21 +45,8 @@ function preload() {
   img15 = loadImage('pennies-16.png');
   //img16 = loadImage('pennies-17.png');
 
-
-
-}
-
-function setup() {
-  // ----------------------------------------** setting canavas as window size and height  **------------------------------------------
-  createCanvas(windowWidth, windowHeight);
-  //loadImage('/Users/alice/Desktop/Pennies/pennies-01.png', img0 => {image(img0,100,100)});
-  background(242,190,210);
-  frameRate(7)
-}
-
-function drawPennies() {
-
   //---------------------------------------------** set array of images ** ---------------------------------------------------
+
   randomImage[0] = img0;
   randomImage[1] = img1;
   randomImage[2] = img2;
@@ -66,7 +56,7 @@ function drawPennies() {
   randomImage[6] = img6;
   randomImage[7] = img7;
   randomImage[8] = img8;
-  randomImage[9] = img9;  
+  randomImage[9] = img9;
   randomImage[10] = img10;
   randomImage[11] = img11;
   randomImage[12] = img12;
@@ -74,42 +64,37 @@ function drawPennies() {
   randomImage[14] = img14;
   randomImage[15] = img15;
   //randomImage[16] = img16;
- 
 
+}
 
-  //  image(img8, 100, 100);
-  //  img8.resize(100,100);
+function setup() {
+  // ----------------------------------------** setting canavas as window size and height  **------------------------------------------
+  createCanvas(windowWidth, windowHeight);
+  //loadImage('/Users/alice/Desktop/Pennies/pennies-01.png', img0 => {image(img0,100,100)});
+  background(242,190,210);
+  frameRate(7)
 
-  //  image(img7, 100, 100);
-  //  img7.resize(100,100);
+}
 
-  // -------------------------------------------------- ** testing ** ------------------------------------------------------
-  // if (mouseIsPressed) {
-  //   noStroke();
-  //   fill(82,31,18);
-  // } else {
-  //   noStroke;
-  //   fill(82,31,18);
-  // }
+function drawPennies() {
 
-  // ---------------------------------- ** variable to store random image from array ** -----------------------------------------------
-  randomVariable = random(randomImage);
+  for (let n = 0; n < numPennies; ++n) {
+    // ---------------------------------- ** variable to store random image from array ** -----------------------------------------------
+    var idx = n%numPennies;
+    randomVariable = randomImage[idx];
+    // random(randomImage);
 
-  //image(img7,mouseX,mouseY,40,40);
+    // --------------------------- ------ ** if statement to make 2p bigger than 1p ** ------------------------------------------------
+    if (randomVariable != randomImage[2] && randomVariable != randomImage[0] && randomVariable != randomImage[1]) {
+      image(randomVariable,pennyX[n],pennyY[n],70,70);
+    }
+    else {
+      image(randomVariable,pennyX[n],pennyY[n],85,85);
+      //image(randomImage[randomVar],mouseX,mouseY,80,80);
 
-  // --------------------------- ------ ** if statement to make 2p bigger than 1p ** ------------------------------------------------
-  if (randomVariable != randomImage[2] && randomVariable != randomImage[0] && randomVariable != randomImage[1]) {
-    image(randomVariable,mouseX,mouseY,70,70);
-  }
-  else {
-    image(randomVariable,mouseX,mouseY,85,85);
-    //image(randomImage[randomVar],mouseX,mouseY,80,80);
-
+    }
   }
 
-  //image(random(randomImage),mouseX,mouseY,80,80);
-  
-  
 }
 
 function draw() {
@@ -118,12 +103,15 @@ function draw() {
   // --------------------------------------------- ** centre image to mouse ** ---------------------------------------------
   imageMode(CENTER);
 
+  clear();
+  background(242,190,210);
+
+
+  pennyX[currentPenny] = mouseX;
+  pennyY[currentPenny] = mouseY;
+
+  if (++currentPenny == numPennies) currentPenny = 0;
 
   drawPennies();
-
-  //image(img8,200,200,25,25);
-
-  //randomImage;
-
 
 }
