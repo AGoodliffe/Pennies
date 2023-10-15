@@ -118,7 +118,7 @@ function setup() {
   button.style('border-width', 0);
   //button.position();
   //button.position((windowWidth/2), (windowHeight/1.25));
-  button.position((windowWidth/2)-((windowWidth/3)/2), (windowHeight/1.25));
+  button.position((windowWidth/2)-((windowWidth/2.5)/2), (windowHeight/1.25));
   button.mousePressed(onButtonPressed);
   //button.setAutoDraw(false);
 }
