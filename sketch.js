@@ -51,7 +51,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   //loadImage('/Users/alice/Desktop/Pennies/pennies-01.png', img0 => {image(img0,100,100)});
   background(242,190,210);
-  frameRate(13);
+  frameRate(10);
   pinkCol = color(242,190,210);
   brownCol = color(81, 31, 18);
 
