@@ -16,6 +16,9 @@ let currentThought = randomThought[0];
 
 let button;
 
+let pinkCol;
+let brownCol;
+
 //let myFont;
 
 function preload() {
@@ -49,9 +52,20 @@ function setup() {
   //loadImage('/Users/alice/Desktop/Pennies/pennies-01.png', img0 => {image(img0,100,100)});
   background(242,190,210);
   frameRate(13);
+  pinkCol = color(242,190,210);
+  brownCol = color(81, 31, 18);
 
-  button = createButton('click me');
-  button.position(0, 0);
+  
+  button = createButton('  give me another thought  ');
+  button.center('horizontal');
+  button.style('text-align', 'center');
+  button.style('font-size', '30px');
+  button.style("font-family", "bookmania");
+  button.style('background-color', pinkCol);
+  button.style('font-fill', brownCol);
+  button.style('border-width', 0);
+  button.center();
+  button.position((windowWidth/2), (windowHeight/1.25));
   button.mousePressed(onButtonPressed);
 }
 
@@ -75,13 +89,16 @@ function drawPennies() {
 }
 
 function drawThought() {
-  textSize(20);
-  fill('#ED225D');
-  //textFont(myFont);
-  textSize(36);
-  text('p5*js', 10, 50);
-  text("Penny for your thoughts?", 50, 50);
-  text(currentThought, 50, 100);
+
+  fill(81, 31, 18);
+  textFont('bookmania');
+  textSize(windowWidth/30);
+  text
+  //text('p5*js', 10, 50);
+  textAlign(CENTER);
+  text("PENNY FOR YOUR THOUGHTS", (windowWidth/2), (windowHeight/10));
+  textSize(windowWidth/50);
+  text(currentThought, (windowWidth/2), (windowHeight/2));
 }
 
 function draw() {
