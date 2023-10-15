@@ -8,14 +8,14 @@ let pennyY = [];
 
 // ---------------------------------------- ** array to store thoughts ** -------------------------------------------------
 let randomThought = [
-  "I\’m really hyper aware that my shoes smell really bad at the moment",
+  "I’m really hyper aware that my shoes smell really bad at the moment",
   "can people see my get changed from my window",
   "I've been attempting to work out what is god to me, and then deciding that I am pantheist",
   "What's for dinner?",
   "Will it get easier?",
   "What needs doing?",
   "The formalisation of Game Theory has been instrumental in our capability to delude ourselves for the sake of progress.",
-  "I cant decide if I like that it\’s autumn because the leaves are pretty and music sounds better or if I hate that it’s autumn because it gets dark early and my laundry doesn’t dry quickly",
+  "I can’t decide if I like that it’s autumn because the leaves are pretty and music sounds better or if I hate that it’s autumn because it gets dark early and my laundry doesn’t dry quickly",
   "Am I at risk of the French bed bug epidemic?",
   "Am I doing the right thing and how am I supposed to know",
   "I really really hate our government. They all seem so incapable, and yet so cruel.",
