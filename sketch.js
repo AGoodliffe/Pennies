@@ -109,7 +109,7 @@ function setup() {
   // button.center('horizontal');
   // button.style('height', windowHeight/80);
   // button.style('width', windowHeight/50);
-  button.size((windowWidth/3),(windowWidth/9));
+  button.size((windowWidth/2.5),(windowWidth/9));
   button.style('text-align', 'center');
   button.style('font-size', '35px');
   button.style("font-family", "bookmania");
