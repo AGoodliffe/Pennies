@@ -66,6 +66,7 @@ let button;
 
 let pinkCol;
 let brownCol;
+let bodyTextSize;
 
 //let myFont;
 
@@ -101,9 +102,10 @@ function setup() {
   frameRate(10);
   pinkCol = color(242,190,210,0);
   brownCol = color(81, 31, 18);
+  bodyTextSize = (windowWidth/30);
 
   
-  button = createButton('  give me another thought  ');
+  button = createButton('  GIVE ME ANOTHER THOUGHT  ');
   //button.center('horizontal');
   button.style('text-align', 'center');
   button.style('font-size', '30px');
@@ -145,7 +147,7 @@ function drawThought() {
   textSize(windowWidth/30);
   text
   //text('p5*js', 10, 50);
-  textAlign(CENTER);
+  textAlign(CENTER,CENTER);
   text("PENNY FOR YOUR THOUGHTS", (windowWidth/2), (windowHeight/10));
   
   
@@ -156,7 +158,7 @@ function drawThought() {
   textSize(windowWidth/50);
   textWrap(WORD);
   //text.center('horizontal');
-  text(currentThought, ((windowWidth/2)-350), (windowHeight/2.25), 700, 500);
+  text(currentThought, ((windowWidth/2)-350), (windowHeight/2)-250, 700, 500);
 }
 
 function draw() {
