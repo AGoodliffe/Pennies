@@ -111,7 +111,7 @@ function setup() {
   // button.style('width', windowHeight/50);
   button.size((windowWidth/3),(windowWidth/9));
   button.style('text-align', 'center');
-  button.style('font-size', '40px');
+  button.style('font-size', '35px');
   button.style("font-family", "bookmania");
   button.style('background-color', pinkCol);
   button.style('color', brownCol);
