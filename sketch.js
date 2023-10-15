@@ -133,7 +133,7 @@ function drawPennies() {
     randomVariable = randomImage[idx];
 
     // --------------------------- ------ ** if statement to make 2p bigger than 1p ** ------------------------------------------------
-    if (randomVariable != randomImage[2] && randomVariable != randomImage[0] && randomVariable != randomImage[1]) {
+    if (randomVariable != randomImage[0] && randomVariable != randomImage[3] && randomVariable != randomImage[12]) {
       image(randomVariable,pennyX[penny],pennyY[penny],70,70);
     }
     else {
