@@ -16,6 +16,8 @@ let currentThought = randomThought[0];
 
 let button;
 
+//let myFont;
+
 function preload() {
 
   // ---------------------------------------- ** loading images ** ----------------------------------------------------------
@@ -36,6 +38,8 @@ function preload() {
   randomImage[14] = loadImage('pennies-15.png');
   randomImage[15] = loadImage('pennies-16.png');
   randomImage[16] = loadImage('pennies-17.png');
+
+  //myFont = loadFont('https://use.typekit.net/fhc7aff.css');
 
 }
 
@@ -72,6 +76,10 @@ function drawPennies() {
 
 function drawThought() {
   textSize(20);
+  fill('#ED225D');
+  //textFont(myFont);
+  textSize(36);
+  text('p5*js', 10, 50);
   text("Penny for your thoughts?", 50, 50);
   text(currentThought, 50, 100);
 }
