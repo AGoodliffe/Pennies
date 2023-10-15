@@ -57,16 +57,18 @@ function setup() {
 
   
   button = createButton('  give me another thought  ');
-  button.center('horizontal');
+  //button.center('horizontal');
   button.style('text-align', 'center');
   button.style('font-size', '30px');
   button.style("font-family", "bookmania");
   button.style('background-color', pinkCol);
   button.style('font-fill', brownCol);
   button.style('border-width', 0);
-  button.center();
-  button.position((windowWidth/2), (windowHeight/1.25));
+  //button.position();
+  //button.position((windowWidth/2), (windowHeight/1.25));
+  button.position((windowWidth/2)-(button.width), (windowHeight/1.25));
   button.mousePressed(onButtonPressed);
+  //button.setAutoDraw(false);
 }
 
 function drawPennies() {
