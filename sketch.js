@@ -102,16 +102,16 @@ function setup() {
   frameRate(9);
   pinkCol = color(242,190,210,0);
   brownCol = color(81, 31, 18);
-  bodyTextSize = (windowWidth/3);
+  bodyTextSize = (windowWidth/2);
 
   
   button = createButton('GIVE ME ANOTHER THOUGHT');
   // button.center('horizontal');
   // button.style('height', windowHeight/80);
   // button.style('width', windowHeight/50);
-  button.size((windowWidth/4),(windowWidth/9));
+  button.size((windowWidth/4.5),(windowWidth/9));
   button.style('text-align', 'center');
-  button.style('font-size', '30px');
+  button.style('font-size', '25px');
   button.style("font-family", "bookmania");
   button.style("font-style", "italic")
   button.style('background-color', pinkCol);
@@ -119,7 +119,7 @@ function setup() {
   button.style('border-width', 0);
   //button.position();
   //button.position((windowWidth/2), (windowHeight/1.25));
-  button.position((windowWidth/2)-((windowWidth/4)/2), (windowHeight/1.25));
+  button.position((windowWidth/2)-((windowWidth/4.5)/2), (windowHeight/1.25));
   button.mousePressed(onButtonPressed);
   //button.setAutoDraw(false);
 }
