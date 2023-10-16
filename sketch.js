@@ -109,7 +109,7 @@ function setup() {
   // button.center('horizontal');
   // button.style('height', windowHeight/80);
   // button.style('width', windowHeight/50);
-  button.size((windowWidth/4.5),(windowWidth/9));
+  button.size((windowWidth/3),(windowWidth/9));
   button.style('text-align', 'center');
   button.style('font-size', '25px');
   button.style("font-family", "bookmania");
@@ -119,7 +119,7 @@ function setup() {
   button.style('border-width', 0);
   //button.position();
   //button.position((windowWidth/2), (windowHeight/1.25));
-  button.position((windowWidth/2)-((windowWidth/4.5)/2), (windowHeight/1.25));
+  button.position((windowWidth/2)-((windowWidth/3)/2), (windowHeight/1.25));
   button.mousePressed(onButtonPressed);
   //button.setAutoDraw(false);
 }
