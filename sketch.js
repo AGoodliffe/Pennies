@@ -62,7 +62,7 @@ let randomThought = [
 ];
 let currentThought = randomThought[0];
 
-let numCoinsWide = 8;
+var numCoinsWide = 8;
 
 let button;
 
@@ -116,6 +116,8 @@ function setup() {
 function windowResized() {
 
   clear();
+
+  numCoinsWide = floor(windowWidth/80);
 
   var numThoughts = randomThought.length;
   var squareWidth = windowWidth/numCoinsWide;
