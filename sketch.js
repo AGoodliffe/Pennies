@@ -62,11 +62,15 @@ let randomThought = [
 ];
 let currentThought = randomThought[0];
 
+let numCoinsWide = 8;
+
 let button;
 
 let pinkCol;
 let brownCol;
 let bodyTextSize;
+
+let thoughtTextHeight = 100;
 
 //let myFont;
 
@@ -91,12 +95,13 @@ function preload() {
   randomImage[15] = loadImage('pennies-16.png');
   randomImage[16] = loadImage('pennies-17.png');
 
-
 }
 
 function setup() {
   // ----------------------------------------** setting canavas as window size and height  **------------------------------------------
-  createCanvas(windowWidth, windowHeight);
+  var myCanvas = createCanvas(windowWidth, windowHeight);
+  myCanvas.parent('myCanvasDiv');
+
   //loadImage('/Users/alice/Desktop/Pennies/pennies-01.png', img0 => {image(img0,100,100)});
   background(242,190,210);
   frameRate(9);
@@ -104,28 +109,42 @@ function setup() {
   brownCol = color(81, 31, 18);
   bodyTextSize = (windowWidth/2);
 
-  
-  button = createButton('GIVE ME ANOTHER THOUGHT');
-  // button.center('horizontal');
-  // button.style('height', windowHeight/80);
-  // button.style('width', windowHeight/50);
-  button.size((windowWidth/3),(windowWidth/9));
-  button.style('text-align', 'center');
-  button.style('font-size', '25px');
-  button.style("font-family", "bookmania");
-  button.style("font-style", "italic")
-  button.style('background-color', pinkCol);
-  button.style('color', brownCol);
-  button.style('border-width', 0);
-  //button.position();
-  //button.position((windowWidth/2), (windowHeight/1.25));
-  button.position((windowWidth/2)-((windowWidth/3)/2), (windowHeight/1.25));
-  button.mousePressed(onButtonPressed);
-  //button.setAutoDraw(false);
+  windowResized();
+
 }
 
-function drawPennies() {
+function windowResized() {
 
+  clear();
+
+  var numThoughts = randomThought.length;
+  var squareWidth = windowWidth/numCoinsWide;
+
+  let yPos = thoughtTextHeight+100; // buttons are createdd in page co-ordinations, not the canvas
+  for (var n = 0; n < numThoughts; ++n)
+  {
+    var xPos = (n % numCoinsWide) * squareWidth;
+
+    // var button = createButton('X')
+
+    // button.size(squareWidth,squareWidth);
+    // button.style('text-align', 'center');
+    // button.style('background-color', '#ff000000');
+    // button.style('border-width', 0);
+    // button.position(xPos, yPos, squareWidth, squareWidth);
+    // // button.mousePressed(onButtonPressed);
+    // button.mousePressed(((n) => { onButtonPressed(n); })(n));
+
+    // Roll over onto the next row when at the end of a row
+    if (n%numCoinsWide == numCoinsWide-1) yPos += squareWidth;
+  }
+
+  resizeCanvas(windowWidth, yPos + squareWidth );
+}
+
+function drawPennyTrail() {
+
+  tint(255, 128)
   for (let n = 0; n < numPennies; ++n) {
 
     penny = (n + currentPenny)%numPennies;
@@ -135,10 +154,10 @@ function drawPennies() {
 
     // --------------------------- ------ ** if statement to make 2p bigger than 1p ** ------------------------------------------------
     if (randomVariable != randomImage[0] && randomVariable != randomImage[3] && randomVariable != randomImage[12]) {
-      image(randomVariable,pennyX[penny],pennyY[penny],70,70);
+      image(randomVariable,pennyX[penny],pennyY[penny],30,30);
     }
     else {
-      image(randomVariable,pennyX[penny],pennyY[penny],85,85);
+      image(randomVariable,pennyX[penny],pennyY[penny],35,35);
     }
   }
 }
@@ -146,27 +165,40 @@ function drawPennies() {
 function drawThought() {
 
   fill(81, 31, 18);
-  textFont('bookmania');
-  textStyle('normal');
-  textSize(windowWidth/30);
-  text
-  //text('p5*js', 10, 50);
+
+  // ----------------------------------------- ** draw current thought to screen ** ----------------------------------------
   textAlign(CENTER,CENTER);
-  text("PENNY FOR YOUR THOUGHTS", (windowWidth/2), (windowHeight/10));
-  
-  
-  // ----------------------------------------- ** draw current though to screen ** ----------------------------------------
-  //text(currentThought, (windowWidth/2), (windowHeight/2));
+  textWrap(WORD);
   textFont('bookmania', 'serif', 'italic');
   textStyle('italic');
-  textSize(windowWidth/50);
-  textWrap(WORD);
-  //text.center('horizontal');
-  text(currentThought, ((windowWidth/2)-350), (windowHeight/2)-250, 700, 500);
+  textSize(windowWidth/40);
+
+  text(currentThought, ((windowWidth/2)-350), 0, 700, thoughtTextHeight);
+
+}
+
+function drawGrid() {
+
+  tint(255, 255)
+  var numThoughts = randomThought.length;
+  var squareWidth = windowWidth/numCoinsWide;
+
+  let yPos = thoughtTextHeight + squareWidth/2;
+  for (var n = 0; n < numThoughts; ++n)
+  {
+    var xPos = squareWidth/2 + (n % numCoinsWide) * squareWidth;
+
+    image(randomImage[n%randomImage.length],
+      xPos+10,yPos+10,
+      squareWidth-20,
+      squareWidth-20);
+
+    if (n%numCoinsWide == numCoinsWide-1) yPos += squareWidth;
+  }
 }
 
 function draw() {
-  //setTimeout(drawPennies, 2000);
+  //setTimeout(drawPennyTrail, 2000);
 
   // --------------------------------------------- ** centre image to mouse ** ---------------------------------------------
   imageMode(CENTER);
@@ -180,12 +212,19 @@ function draw() {
   if (++currentPenny == numPennies) currentPenny = 0;
 
   drawThought();
-  drawPennies();
-
+  drawGrid();
+  drawPennyTrail();
 }
 
-function onButtonPressed() {
+function mousePressed()
+{
+  if (mouseY < thoughtTextHeight) return;
 
-  currentThought = random(randomThought);
+  var squareWidth = windowWidth/numCoinsWide;
 
+  var col = mouseX/squareWidth;
+  var row = (mouseY-thoughtTextHeight)/squareWidth;
+  var thoughtIndex = floor(col) + floor(row)*numCoinsWide;
+
+  currentThought = randomThought[thoughtIndex];
 }

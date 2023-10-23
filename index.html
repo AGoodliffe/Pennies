@@ -13,6 +13,28 @@
         font-family: "bookmania", serif;
         font-weight: 300;
         font-style: normal;
+        background-color: #f2bed2;
+      }
+      .header {
+        width: 100%;
+        background-color: #f2bed2;
+        color: #330000;
+        text-align: center;
+        padding: 0%;
+      }
+      .script {
+        width: 100%;
+        background-color: #f2bed2;
+        color: #000;
+        text-align: center;
+        padding: 0%;
+      }
+      .footer {
+        width: 100%;
+        background-color: #f2bed2;
+        color: #000;
+        text-align: center;
+        padding: 0%;
       }
       </style>
 
@@ -23,6 +45,25 @@
   </head>
 
   <body>
-    <script src="sketch.js"></script>
+    <!-- header -->
+    <div class="header">
+      <h1>PENNY FOR YOUR THOUGHTS</h1>
+    </div>
+    <!-- p5 -->
+    <div id="myCanvasDiv" class=""script">
+      <script src="sketch.js"></script>
+    </div>
+    <!-- footer -->
+    <div class="footer">
+      <p>Share a thought!</p>
+      <p><form width="100%">
+        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="email" placeholder="Email">
+        <br/>
+        <input type="text" name="message" placeholder="My thought">
+        <br/>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
   </body>
 </html>
