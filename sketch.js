@@ -197,7 +197,7 @@ function draw() {
   if (++currentPenny == numPennies) currentPenny = 0;
 
   drawGrid();
-  drawPennyTrail();
+  // drawPennyTrail();
 }
 
 function mousePressed()
