@@ -113,7 +113,9 @@ function windowResized() {
 
   clear();
 
-  numCoinsWide = floor(windowWidth/80);
+  let coinWidth = 120;
+
+  numCoinsWide = floor(windowWidth/coinWidth);
 
   var numThoughts = randomThought.length;
   var squareWidth = windowWidth/numCoinsWide;
