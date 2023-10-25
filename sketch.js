@@ -70,10 +70,6 @@ let pinkCol;
 let brownCol;
 let bodyTextSize;
 
-let thoughtTextHeight = 100;
-
-//let myFont;
-
 function preload() {
 
   // ---------------------------------------- ** loading images ** ----------------------------------------------------------
@@ -122,7 +118,7 @@ function windowResized() {
   var numThoughts = randomThought.length;
   var squareWidth = windowWidth/numCoinsWide;
 
-  let yPos = thoughtTextHeight+100; // buttons are createdd in page co-ordinations, not the canvas
+  let yPos = 0;
   for (var n = 0; n < numThoughts; ++n)
   {
     var xPos = (n % numCoinsWide) * squareWidth;
@@ -164,28 +160,13 @@ function drawPennyTrail() {
   }
 }
 
-function drawThought() {
-
-  fill(81, 31, 18);
-
-  // ----------------------------------------- ** draw current thought to screen ** ----------------------------------------
-  textAlign(CENTER,CENTER);
-  textWrap(WORD);
-  textFont('bookmania', 'serif', 'italic');
-  textStyle('italic');
-  textSize(windowWidth/40);
-
-  text(currentThought, ((windowWidth/2)-350), 0, 700, thoughtTextHeight);
-
-}
-
 function drawGrid() {
 
   tint(255, 255)
   var numThoughts = randomThought.length;
   var squareWidth = windowWidth/numCoinsWide;
 
-  let yPos = thoughtTextHeight + squareWidth/2;
+  let yPos = squareWidth/2;
   for (var n = 0; n < numThoughts; ++n)
   {
     var xPos = squareWidth/2 + (n % numCoinsWide) * squareWidth;
@@ -213,20 +194,21 @@ function draw() {
 
   if (++currentPenny == numPennies) currentPenny = 0;
 
-  drawThought();
   drawGrid();
   drawPennyTrail();
 }
 
 function mousePressed()
 {
-  if (mouseY < thoughtTextHeight) return;
-
   var squareWidth = windowWidth/numCoinsWide;
 
   var col = mouseX/squareWidth;
-  var row = (mouseY-thoughtTextHeight)/squareWidth;
+  var row = mouseY/squareWidth;
   var thoughtIndex = floor(col) + floor(row)*numCoinsWide;
 
+  if (thoughtIndex >= randomThought.length) return;
+
   currentThought = randomThought[thoughtIndex];
+
+  document.getElementById("bum").innerHTML = currentThought;
 }
