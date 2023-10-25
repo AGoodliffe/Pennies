@@ -57,7 +57,21 @@ let randomThought = [
   "Cupcakes are temporary but death is forever.",
   "Do I have to get out of bed?",
   "Not looking forward to today",
-  "Why does 3 pints make me hungover?"
+  "Why does 3 pints make me hungover?",
+  "Medicine in western countries treats the symptoms of ill health, active pro wellness in society would benefit the individual and their social environment",
+  "Some people have all the luck don't worry they, and some really don't",
+  "Why is the answer to aggression more aggression?",
+  "I wish mum was still here and could see how far I've come, I hope she's be proud.",
+  "I love the feel of the sun on my face and the smell of the autumn air.",
+  "Belonging to a family holds me together.",
+  "Is it home time yet?",
+  "How long until home time?",
+  "You still my anxious thoughts",
+  "I'm hungry",
+  "I have something to prove but I don’t know what.",
+  "Does coffee really make us feel more awake or have have we just been told that so it’s like a placebo for everyone?"
+
+
 
 ];
 let currentThought = randomThought[0];
@@ -113,7 +127,7 @@ function windowResized() {
 
   clear();
 
-  let coinWidth = 120;
+  let coinWidth = 150;
 
   numCoinsWide = floor(windowWidth/coinWidth);
 
