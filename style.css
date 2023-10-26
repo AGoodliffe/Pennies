@@ -15,6 +15,15 @@ bodycopy {
 	font-variation-settings: 'slnt' 0, 'MONO' 0;
 }
 
+input[type=text] {
+	border: 0px;
+	font-family: "bookmania", "serif";
+	font-weight: 300;
+	color: rgba(81, 31, 18, 0.85);
+}
+
 canvas {
   display: block;
 }
+
+
